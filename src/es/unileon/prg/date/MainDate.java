@@ -1,3 +1,5 @@
+//Felipe Alvarez Martin
+
 package es.unileon.prg.date;
 
 public class MainDate{
@@ -10,7 +12,7 @@ public class MainDate{
 
 		System.out.println("Day: " + today.getDay() + "\nMonth: " + today.getMonth() + "\nYear: " + today.getYear());
 		
-		System.out.println(today.isSame(27,3,2017));
+		System.out.println(today.getSeason());
 		
 	}
 }
