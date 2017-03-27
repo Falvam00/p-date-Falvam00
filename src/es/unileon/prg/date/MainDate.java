@@ -10,5 +10,7 @@ public class MainDate{
 
 		System.out.println("Day: " + today.getDay() + "\nMonth: " + today.getMonth() + "\nYear: " + today.getYear());
 		
+		System.out.println(today.isSame(27,3,2017));
+		
 	}
 }

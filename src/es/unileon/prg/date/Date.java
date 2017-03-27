@@ -28,6 +28,70 @@ public class Date{
 		return this.year;
 	}
 
+	public String isSameYear(int year){
+
+		String result;
+
+		if(this.year==year){
+
+			result="Its the same year";
+		}
+		else{
+
+			result="It isnt the same year";
+		}
+
+		return result;
+	}
+
+	public String isSameMonth(int month){
+
+		String result;
+
+		if(this.month==month){
+
+			result="Its the same month";
+		}
+		else{
+
+			result="It isnt the same month";
+		}
+
+		return result;
+	}
+
+	public String isSameDay(int day){
+
+		String result;
+
+		if(this.day==day){
+
+			result="Its the same day";
+		}
+		else{
+
+			result="It isnt the same day";
+		}
+
+		return result;
+	}
+
+	public String isSame(int day, int month, int year){
+
+		String result;
+
+		if(this.day==day && this.month==month && this.year==year){
+
+			result="Its the same date";
+		}
+		else{
+
+			result="It isnt the same date";
+		}
+
+		return result;
+	}
+
 	/*public int countDaysYear(){
 
 		int year;
