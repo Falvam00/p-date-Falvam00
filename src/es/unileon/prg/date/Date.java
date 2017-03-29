@@ -241,8 +241,6 @@ public class Date{
 		
 		return number;
 	}
-	
-	
 
 	public String toString(){
 
