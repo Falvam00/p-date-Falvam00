@@ -8,87 +8,79 @@ public class Date{
 	private int month;
 	private int year;
 
-	public Date(int day, int month, int year){
+	public Date(int day, int month, int year) throws DateException{
 
 		this.day=day;
-		this.month=month;
+
+		if(month<1 || month>12){
+			
+			throw new DateException("Month " + month + " invalid");
+		} else{
+			
+			this.month=month;
+		}
+		
 		this.year=year;
 	}
 
 	public int getDay(){
-
+		
 		return this.day;
 	}
 
 	public int getMonth(){
-
+		
 		return this.month;
 	}
 
 	public int getYear(){
-
+		
 		return this.year;
 	}
 
-	public String isSameYear(int year){
+	public boolean isSameYear(int year){
 
-		String result;
+		boolean result=false;
 
 		if(this.year==year){
-
-			result="Its the same year";
-		}
-		else{
-
-			result="It isnt the same year";
+			
+			result=true;
 		}
 
 		return result;
 	}
 
-	public String isSameMonth(int month){
+	public boolean isSameMonth(int month){
 
-		String result;
+		boolean result=false;
 
 		if(this.month==month){
-
-			result="Its the same month";
-		}
-		else{
-
-			result="It isnt the same month";
+			
+			result=true;
 		}
 
 		return result;
 	}
 
-	public String isSameDay(int day){
+	public boolean isSameDay(int day){
 
-		String result;
+		boolean result=false;
 
 		if(this.day==day){
-
-			result="Its the same day";
-		}
-		else{
-
-			result="It isnt the same day";
+			
+			result=true;
 		}
 
 		return result;
 	}
 
-	public String isSame(int day, int month, int year){
+	public boolean isSame(int day, int month, int year){
 
-		String result;
+		boolean result=false;
 
 		if(this.day==day && this.month==month && this.year==year){
 
-			result="Its the same date";
-		}
-		else{
-
-			result="It isnt the same date";
+			result=true;
 		}
 
 		return result;
@@ -147,58 +139,36 @@ public class Date{
 
 		switch(this.month){
 
-			case 1:
+			case 1:	//next
+			case 3:	//next
+			case 5:	//next
+			case 7:	//next
+			case 8:	//next
+			case 10:	//next
+			case 12:
 				number=31;
 				break;
 			case 2:
 				number=28;
 				break;
-			case 3:
-				number=31;
-				break;
-			case 4:
-				number=30;
-				break;
-			case 5:
-				number=31;
-				break;
-			case 6:
-				number=30;
-				break;
-			case 7:
-				number=31;
-				break;
-			case 8:
-				number=31;
-				break;
-			case 9:
-				number=30;
-				break;
-			case 10:
-				number=31;
-				break;
+			case 4:	//next
+			case 6:	//next
+			case 9:	//next
 			case 11:
 				number=30;
-				break;
-			case 12:
-				number=31;
 				break;
 		}
 
 		return number;
 	}
 
-	public String isDayRigth(){
+	public boolean isDayRigth(){
 
-		String result;
+		boolean result=true;
 
 		if(this.day<=0 || this.day>this.daysOfMonth()){
 
-			result="The day is wrong";
-		}
-		else{
-
-			result="The day is rigth";
+			result=false;
 		}
 
 		return result;
@@ -210,22 +180,46 @@ public class Date{
 
 		switch(this.month){
 
-			case 12: 	//next
+			case 12:
+				if(this.day<21){
+					season="Autumn";
+				} else{
+					season="Winter";
+				}
+				break;
 			case 1: 	//next
 			case 2: 
 				season="Winter";
 				break;
-			case 3: 	//next
+			case 3:
+				if(this.day<21){
+					season="Winter";
+				} else{
+					season="Spring";
+				}
+				break;
 			case 4: 	//next
 			case 5:
 				season="Spring";
 				break;
-			case 6: 	//next
+			case 6:
+				if(this.day<21){
+					season="Spring";
+				} else{
+					season="Summer";
+				}
+				break;
 			case 7: 	//next
 			case 8:
 				season="Summer";
 				break;
-			case 9:		//next
+			case 9:
+				if(this.day<21){
+					season="Summer";
+				} else{
+					season="Autumn";
+				}
+				break;
 			case 10: 	//next
 			case 11:
 				season="Autumn";
@@ -233,6 +227,26 @@ public class Date{
 		}
 
 		return season;
+	}
+	
+	public int monthsLeft(){
+		
+		int number=0;
+		int i;
+		
+		for(i=this.month+1;i<=12;i++){
+			
+			number++;
+		}
+		
+		return number;
+	}
+	
+	
+
+	public String toString(){
+
+		return this.day + "/"+ this.month + "/" + this.year;
 	}
 
 	/*public int countDaysYear(){

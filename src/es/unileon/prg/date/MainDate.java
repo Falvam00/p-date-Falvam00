@@ -8,11 +8,16 @@ public class MainDate{
 
 		Date today;
 
-		today=new Date(27,3,2017);
+		try{
 
-		System.out.println("Day: " + today.getDay() + "\nMonth: " + today.getMonth() + "\nYear: " + today.getYear());
+			today=new Date(45,3,2017);
+			System.out.println(today);
+
+		} catch(DateException e){
+				System.out.println(e.getMessage());
+		}
 		
-		System.out.println(today.getSeason());
+		//System.out.println(today.getSeason());
 		
 	}
 }
