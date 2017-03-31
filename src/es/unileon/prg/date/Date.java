@@ -86,11 +86,11 @@ public class Date{
 		return result;
 	}
 
-	public String getNameMonth(){
+	public String getNameMonth(int month){
 
 		String name="";
 
-		switch(this.month){
+		switch(month){
 
 			case 1:
 				name="January";
@@ -133,11 +133,11 @@ public class Date{
 		return name;
 	}
 
-	public int daysOfMonth(){
+	public int daysOfMonth(int month){
 
 		int number=0;
 
-		switch(this.month){
+		switch(month){
 
 			case 1:	//next
 			case 3:	//next
@@ -166,7 +166,7 @@ public class Date{
 
 		boolean result=true;
 
-		if(this.day<=0 || this.day>this.daysOfMonth()){
+		if(this.day<=0 || this.day>daysOfMonth(this.month)){
 
 			result=false;
 		}
@@ -246,21 +246,44 @@ public class Date{
 
 		return this.day + "/"+ this.month + "/" + this.year;
 	}
+	
+	public int countDaysUntilEndMonth(){
+		
+		int number;
+		
+		number=daysOfMonth(this.month)-this.day;
+		
+		return number;
+	}
+	
+	public String monthsWithSameDays(){
+		
+		String result="";
+		
+		for(int i=1;i<=12;i++){
+			
+			if(daysOfMonth(this.month)==daysOfMonth(i)){
+				
+				result=result + getNameMonth(i) + ", ";
+			}
+		}
+		
+		return result;
+	}
 
-	/*public int countDaysYear(){
+	public int countDaysYear(){
 
-		int year;
 		int counter=0;
 
 		for(int i=1; i<this.month; i++){
 
-			counter=counter+getNumDaysMonth(i);
+			counter=counter+daysOfMonth(i);
 		}
 
 		counter=counter+this.day;
 
 		return counter;
-	}*/
+	}
 
 	/*public int getNumGuess(){
 

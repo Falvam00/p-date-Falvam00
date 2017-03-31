@@ -12,7 +12,7 @@ public class MainDate{
 
 			today=new Date(45,3,2017);
 			System.out.println(today);
-			System.out.println(today.getSeason());
+			System.out.println(today.monthsWithSameDays());
 
 		} catch(DateException e){
 				System.out.println(e.getMessage());
