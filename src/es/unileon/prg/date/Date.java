@@ -22,6 +22,16 @@ public class Date{
 		
 		this.year=year;
 	}
+	
+	public Date(int year){
+		
+		this.year=year;
+		
+		this.month=(int)(Math.random()*12+1);
+		
+		this.day=(int)(Math.random()*daysOfMonth(this.month)+1);
+		
+	}
 
 	public int getDay(){
 		
@@ -285,9 +295,9 @@ public class Date{
 		return counter;
 	}
 
-	/*public int getNumGuess(){
+	public int getNumGuess(){
 
-		int counter;
+		int counter=0;
 		Date randomDate;
 		boolean end=false;
 
@@ -304,6 +314,6 @@ public class Date{
 		}
 
 		return counter;
-	}*/
+	}
 
 }
