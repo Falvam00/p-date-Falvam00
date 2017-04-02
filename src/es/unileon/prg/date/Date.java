@@ -8,10 +8,10 @@ public class Date{
 	private int month;
 	private int year;
 
-	public Date(int day, int month, int year) throws DateException{
-
-		this.day=day;
-
+	public Date(int day, int month, int year) throws DateException{ //constructor
+		
+		this.year=year;
+		
 		if(month<1 || month>12){
 			
 			throw new DateException("Month " + month + " invalid");
@@ -19,11 +19,17 @@ public class Date{
 			
 			this.month=month;
 		}
-		
-		this.year=year;
+
+		if(day<1 || day>daysOfMonth(month)){
+			
+			throw new DateException("Day " + day + " invalid");
+		} else{
+			
+			this.day=day;
+		}
 	}
 	
-	public Date(int year){
+	public Date(int year){	//constructor
 		
 		this.year=year;
 		
@@ -303,7 +309,7 @@ public class Date{
 
 		while(!end){
 
-			randomDate=new Date(this.year);	//crear nuevo constructor para crear fechas aleatorias dado un valor solo
+			randomDate=new Date(this.year);	
 
 			counter++;
 
@@ -314,6 +320,74 @@ public class Date{
 		}
 
 		return counter;
+	}
+	
+	public String nameOfDay(String firstDayOfYear){
+		
+		String name="";
+		int num;
+		
+		num=(this.countDaysYear())%7;
+		
+		if(firstDayOfYear=="monday" || firstDayOfYear=="tuesday" || firstDayOfYear=="wednesday" || firstDayOfYear=="thursday" || firstDayOfYear=="friday" || firstDayOfYear=="saturday" || firstDayOfYear=="sunday"){
+		
+			switch(firstDayOfYear){
+			
+				case "monday":
+					num+=0;
+					break;
+				case "tuesday":
+					num+=1;
+					break;
+				case "wednesday":
+					num+=2;
+					break;
+				case "thursday":
+					num+=3;
+					break;
+				case "friday":
+					num+=4;
+					break;
+				case "saturday":
+					num+=5;
+					break;
+				case "sunday":
+					num+=6;
+					break;			
+			}
+			
+			num=num%7;
+			
+			switch(num){
+			
+				case 1:
+					name="Monday";
+					break;
+				case 2:
+					name="Tuesday";
+					break;
+				case 3:
+					name="Wednesday";
+					break;
+				case 4:
+					name="Thursday";
+					break;
+				case 5:
+					name="Friday";
+					break;
+				case 6:
+					name="Saturday";
+					break;
+				case 0:
+					name="Sunday";
+					break;		
+			}
+		} else{
+			
+			name="Name of firstDayOfYear wrong. Try writting it on lowercase";
+		}
+				
+		return name;
 	}
 
 }
